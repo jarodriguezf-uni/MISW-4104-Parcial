@@ -10,7 +10,6 @@ h1 {
   font-family: 'Jaldi', sans-serif;
 }
 
-/* Avoid double lines above the table header */
 .table {
   border-top: 0 !important;
 }
@@ -18,7 +17,6 @@ h1 {
   border-bottom: 0 !important;
 }
 
-/* Double divider below banner */
 .double-rule {
   height: 0;
   border-top: 2px solid #bdbdbd;
@@ -26,5 +24,12 @@ h1 {
   margin: 1rem 0 1.25rem 0;
 }
 
+.table-wrap {
+  max-width: 65%;
+}
+
+.brand-totals {
+  font-size: 1rem;
+}
 
 

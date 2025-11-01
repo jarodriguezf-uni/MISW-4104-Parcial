@@ -14,6 +14,7 @@ export class VehiculoListComponent implements OnInit {
   vehiculos: Vehiculo[] = [];
   loading = false;
   error?: string;
+  totals: { marca: string; total: number }[] = [];
 
   constructor(private readonly vehiculoService: VehiculoService) {}
 
@@ -22,6 +23,7 @@ export class VehiculoListComponent implements OnInit {
     this.vehiculoService.getVehiculos().subscribe({
       next: (data) => {
         this.vehiculos = data;
+        this.totals = this.calculateTotalsByMarca(data);
         this.loading = false;
       },
       error: () => {
@@ -29,6 +31,14 @@ export class VehiculoListComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  private calculateTotalsByMarca(items: Vehiculo[]): { marca: string; total: number }[] {
+    const brandToCount = new Map<string, number>();
+    for (const v of items) {
+      brandToCount.set(v.marca, (brandToCount.get(v.marca) ?? 0) + 1);
+    }
+    return Array.from(brandToCount.entries()).map(([marca, total]) => ({ marca, total }));
   }
 }
 
