@@ -1,0 +1,36 @@
+<div class="container my-4">
+  <h1 class="mb-4">TuSegundazo.com</h1>
+  <div class="double-rule"></div>
+  <img src="/banner/banner.png" alt="Banner" class="img-fluid w-100 mb-3" />
+  <div class="double-rule"></div>
+
+  <div *ngIf="loading" class="alert alert-info" role="alert">Cargando...</div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+
+  <div class="table-responsive" *ngIf="!loading && !error">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Línea</th>
+          <th scope="col">Modelo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of vehiculos; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ v.marca }}</td>
+          <td>{{ v.linea }}</td>
+          <td>{{ v.modelo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="text-center text-muted mt-5 small">
+    Contact us: +57 3102105253 - info@tusegundazo.com - @tusegundazo
+  </footer>
+</div>
+
+
